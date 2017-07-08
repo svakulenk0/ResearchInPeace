@@ -36,6 +36,20 @@ class Twitter_Processor():
     def retrieve_my_lists(self):
         return self.twitter_client.show_lists(screen_name=MY_NAME)
 
+    def add_batch_to_list(self, list_name, batch):
+        # concatenate user screen names for the query
+        users_string = ",".join(batch)
+        try:
+            self.twitter_client.create_list_members(slug=list_name, owner_screen_name=MY_NAME, screen_name=users_string)
+            print "Added " + str(len(batch)) + " new users to " + list_name
+        except Exception, e:
+            print e
+
+    def get_list_members(self, list_name):
+        list_members = self.twitter_client.get_list_members(slug=list_name, owner_screen_name=MY_NAME,count=5000, skip_status=1)['users']
+        print "Members in the list '" + list_name + "': " + str(len(list_members))
+        return list_members
+
     def add_to_list(self, users, list_name, batch_size=50):
         # remove users that are already in the list: users - set
         list_members = []
