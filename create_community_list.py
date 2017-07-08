@@ -36,6 +36,41 @@ class Twitter_Processor():
     def retrieve_my_lists(self):
         return self.twitter_client.show_lists(screen_name=MY_NAME)
 
+    def add_to_list(self, users, list_name, batch_size=50):
+        # remove users that are already in the list: users - set
+        list_members = []
+        try:
+            list_members = self.get_list_members(list_name)
+        except:
+            # create a new list
+            self.twitter_client.create_list(name=list_name)
+
+        if list_members:
+            list_members_names = set([member['screen_name'] for member in list_members])
+            users.difference_update(list_members_names)
+
+        # remove bots from candidates
+        bots = self.get_list_members(BOT_LIST)
+        if bots:
+            bots_names = set([bot['screen_name'] for bot in bots])
+        users.difference_update(bots_names)
+
+        if users:
+            # split users into batches to send to the API
+            if len(users) < batch_size:
+                batch = users
+                self.add_batch_to_list(list_name, batch)
+
+            else:
+                for batch in zip(*[iter(list(users))]*batch_size):
+                    self.add_batch_to_list(list_name, batch)
+
+            # check that all users were added to the list
+            self.get_list_members(list_name)
+        else:
+            print "No new users added"
+        print "\n"
+
 
 def follow_communities_from_mongo(db_name, collection_name, lists=COMMUNITIES):
     mongo = Mongo_Connector(db_name, collection_name)
