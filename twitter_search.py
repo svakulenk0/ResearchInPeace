@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from settings import *
 from twython import Twython
 from pymongo import MongoClient
 # from mongo import connect as Connection
+
+from settings import *
+from twitter_settings import *
 
 
 # spin up twitter api
