@@ -13,11 +13,11 @@ Step 2. Add all users who tweeted using these hashtags to a public Twitter list.
 '''
 
 from twython import Twython, TwythonRateLimitError
-from mongo_connector import Mongo_Connector
 
 from settings import *
 from twitter_settings import *
 from twitter_search import exhaustive_search
+from mongo_connector import Mongo_Connector
 
 
 class Twitter_Processor():
