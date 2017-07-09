@@ -50,6 +50,17 @@ class Twitter_Processor():
         print "Members in the list '" + list_name + "': " + str(len(list_members))
         return list_members
 
+    def retrieve_friends_of(self, user_name=MY_NAME, limit=200):
+        next_cursor = -1
+        users = []
+        result = self.twitter_client.get_friends_list(screen_name=user_name, count=limit, skip_status=True, include_user_entities=False, cursor=next_cursor)
+        if result:
+            users.extend(result['users'])
+            next_cursor = result['next_cursor']
+            return users
+        else:
+            return users
+
     def add_to_list(self, users, list_name, batch_size=50):
         # remove users that are already in the list: users - set
         list_members = []
