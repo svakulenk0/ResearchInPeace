@@ -12,8 +12,11 @@ Collect users with a specified location in the description
 '''
 
 import numpy as np
+import time
 
 from create_community_list import Twitter_Processor
+from twython.exceptions import TwythonRateLimitError
+
 # from crawl_friends import expand_list_with_fofs
 
 KYIV_KEYWORDS = ['kyiv', 'київ', 'киев']
@@ -51,7 +54,7 @@ def expand_list_with_friends(location):
         # check user-specified location
         users = [user['screen_name'] for keyword in keywords
                for user in friends for location in user['location'].split() if keyword in location.lower().encode('utf-8')]
-        print "#Friends in " + location +":", len(users)
+        print "#Friends in " + list_name +":", len(users)
         TP.add_to_list(set(users), list_name)
 
 
@@ -68,4 +71,9 @@ def test_get_users_by_location():
 
 if __name__ == '__main__':
     # test_get_users_by_location()
-    expand_list_with_friends(location='amsterdam')
+    while True:
+        try:
+            expand_list_with_friends(location='amsterdam')
+        except TwythonRateLimitError as e:
+            print "TwythonRateLimitError... Waiting for 2000 seconds"
+            time.sleep(2000)
