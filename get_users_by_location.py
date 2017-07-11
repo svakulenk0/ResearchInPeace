@@ -11,6 +11,8 @@ Collect users with a specified location in the description
 
 '''
 
+import numpy as np
+
 from create_community_list import Twitter_Processor
 # from crawl_friends import expand_list_with_fofs
 
@@ -40,7 +42,8 @@ def expand_list_with_friends(location):
     keywords = LOCAL_COMMUNITIES[list_name]
     TP = Twitter_Processor()
     members = TP.get_list_members(list_name)
-    for member in members:
+    # shuffle the list of users randomly
+    for member in np.random.permutation(members):
         print member['screen_name']
         # get friends
         friends = TP.retrieve_friends_of(member['screen_name'], 200)
@@ -65,4 +68,4 @@ def test_get_users_by_location():
 
 if __name__ == '__main__':
     # test_get_users_by_location()
-    expand_list_with_friends(location='moscow')
+    expand_list_with_friends(location='amsterdam')
