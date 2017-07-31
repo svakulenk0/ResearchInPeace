@@ -45,6 +45,15 @@ class Twitter_Processor():
         except Exception, e:
             print e
 
+    def unfriend(self, users):
+        '''
+        Input:
+        users - list of screen_names
+        '''
+        for user in users:
+            print user
+            self.twitter_client.destroy_friendship(screen_name=user)
+
     def get_list_members(self, list_name):
         list_members = self.twitter_client.get_list_members(slug=list_name, owner_screen_name=MY_NAME,count=5000, skip_status=1)['users']
         print "Members in the list '" + list_name + "': " + str(len(list_members))

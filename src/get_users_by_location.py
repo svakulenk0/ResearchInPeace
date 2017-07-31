@@ -56,6 +56,8 @@ def expand_list_with_friends(location):
                for user in friends for location in user['location'].split() if keyword in location.lower().encode('utf-8')]
         print "#Friends in " + list_name +":", len(users)
         TP.add_to_list(set(users), list_name)
+        # to avoid Twitter block
+        time.sleep(2000)
 
 
 def test_expand_list_with_friends():
