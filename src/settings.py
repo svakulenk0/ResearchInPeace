@@ -26,7 +26,7 @@ CONFERENCES_2018 = ['@www2018', '#LREC2018']
 KEYWORDS = CONFERENCE_USERS + CONFERENCES_2017 + CONFERENCES_2018 + CONFERENCE_HASHTAGS
 
 # Twitter lists
-MY_LISTS = ['iclr2017', 'coling2016', 'icdm2016', 'sigir2016', 'naacl2016', 'websci16', 'LREC2016', 'DeepLearning', 'icml2016', 'MachineLearning', 'NLProc', 'acl2016berlin', 'cikm2016', 'ictir2016', 'recsys2016', 'iswc2016', 'WSDM2017', 'nips2016', 'kdd2016', 'jmlr', 'emnlp2016', 'www2017Perth']
+# MY_LISTS = ['iclr2017', 'coling2016', 'icdm2016', 'sigir2016', 'naacl2016', 'websci16', 'LREC2016', 'DeepLearning', 'icml2016', 'MachineLearning', 'NLProc', 'acl2016berlin', 'cikm2016', 'ictir2016', 'recsys2016', 'iswc2016', 'WSDM2017', 'nips2016', 'kdd2016', 'jmlr', 'emnlp2016', 'www2017Perth']
 BOT_LIST = 'Filter'
 # sample list (one of my existing Twitter lists) for testing purposes
 MY_LIST = 'naacl2016'

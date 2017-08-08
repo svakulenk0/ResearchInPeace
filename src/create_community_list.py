@@ -153,7 +153,7 @@ def collect_new_users(collection, db_name, load_tweets=True,
             # recent week results only due to the Twitter API restriction
             exhaustive_search(keyword, db_name, collection)
     # 2nd add new users
-    follow_users_from_mongo(db_name, collection)
+    # follow_users_from_mongo(db_name, collection)
     follow_communities_from_mongo(db_name, collection)
     # 3rd TODO check why empty lists are created
     drop_my_empty_lists()
