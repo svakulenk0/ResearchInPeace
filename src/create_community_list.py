@@ -120,7 +120,7 @@ def follow_communities_from_mongo(db_name, collection_name, lists=COMMUNITIES):
                 pass
 
 
-def follow_users_from_mongo(db_name, collection_name, lists=MY_LISTS):
+def follow_users_from_mongo(db_name, collection_name, lists):
     mongo = Mongo_Connector(db_name, collection_name)
     for keyword in lists:
         users = mongo.get_users_from_mongo(keyword)
