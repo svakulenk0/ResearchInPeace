@@ -1,0 +1,14 @@
+{% extends "stats.html" %}
+{% block title %}Community lists{% endblock %}
+{% block body %}
+<h2> Community lists </h2>
+{% if lists %}
+    <ul>
+    {% for list in lists %}
+        <li>
+        <a href="http://svakulenko.ai.wu.ac.at/list_stats/{{list[0]}}" target="_blank">{{list[1]}} {{list[0]}}</a>
+        </li>
+    {% endfor %}
+    {% endif %}
+    </ul>
+{% endblock %}

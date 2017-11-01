@@ -1,0 +1,109 @@
+<!doctype html>
+<head>
+<title>{% block title %}{% endblock %} Research In Peace (R.I.P.) </title>
+<link rel=stylesheet type=text/css href="../static/main.css">
+<link href="../static/bi-style.css" rel="stylesheet" />
+</head>
+
+<body>
+{% block body %}
+  {% for stat in stats %}
+    <h2> {{ stat.list }}</h2>
+    <!-- <h3> {{ stat.velocity }} </h3> -->
+    <div style="width: 330px;" class="myElement">{{ stat.velocity }}</div>
+    <ul>
+    
+    <li> Trending hashtags:
+    {% for hashtag in stat.hashtags %}
+    <!-- # print "Top hashtags used in the community:" -->
+    <a href="https://twitter.com/{{hashtag[0]}}" target="_blank">{{hashtag[1]}} {{hashtag[0]}};</a>
+    {% endfor %}
+
+    <li> Active users:
+    {% for user in stat.users %}
+    <a href="https://twitter.com/{{user[0]}}" target="_blank">{{user[1]}} {{user[0]}};</a>
+    {% endfor %}
+
+    <li> Trending users (mentions):
+    {% for mention in stat.mentions %}
+    <a href="https://twitter.com/{{mention[0]}}" target="_blank">{{mention[1]}} {{mention[0]}};</a>
+    {% endfor %}
+
+    {% if stat.languages %}
+    <li> Languages:
+    {% for language in stat.languages %}
+        {{language[1]}} {{language[0]}};
+    {% endfor %}
+    {% endif %}
+
+    <li> Trending tweets:
+    <ul>
+    {% for tweet in stat.top_tweets %}
+        <!-- {{tweet}} -->
+        <li> <a href="https://twitter.com/anyuser/status/{{tweet[0]}}" target="_blank">{{tweet[3]}} {{tweet[2]}} {{tweet[4]}}: {{tweet[1]}};</a> </li>
+    {% endfor %}
+    </ul>
+
+    {% if stat.urls %}
+    <li> Trending urls:
+    <ul>
+    {% for url in stat.urls %}
+        <li> <a href="{{url[0]}}" target="_blank">{{url[1]}} {{url[0]}}</a> </li>
+        <!-- <li> <a href="{{url[0]}}" target="_blank">{{url[2]}} {{url[1]}}</a> </li> -->
+    {% endfor %}
+    {% endif %}
+    </ul> 
+    
+    {% if stat.media %}
+    <li> Trending media:
+    <ul>
+    {% for url in stat.media %}
+        <li> <a href="{{url[0]}}" target="_blank">{{url[1]}} {{url[0]}}</a> </li>
+        <!-- <li> <a href="{{url[0]}}" target="_blank">{{url[2]}} {{url[1]}}</a> </li> -->
+    {% endfor %}
+    {% endif %}
+    </ul> 
+
+    </ul>
+  {% endfor %}
+
+{% endblock %}
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!-- <script src="../jQuery.js"></script> -->
+<script src="../static/jquery.easing.1.3.js"></script>
+<script src="../static/jquery-barIndicator.js"></script>
+<!-- <script>
+page_url = "www.bbc.co.uk"
+$(document).ready(function(){
+    $.ajax({
+          url: "http://textance.herokuapp.com/title/"+ page_url,
+          complete: function(data) {
+            // alert(data.responseText);
+            var anchor=document.getElementById('url');
+            anchor.innerHTML="High Quality";
+          }
+    });
+});
+</script> -->
+
+<script>
+var opt = { 
+    horBarHeight:30,
+    colorRange:true,
+    numType:'absolute',
+    numMin:0,
+    numMax:100,
+    horTitle:'Stream velocity (tweets/hour):',
+    forceAnim: true,
+    labelNumCount: false,
+    backColor: 'rgb(77, 77, 77) ',
+    // numMinLabel:true,
+    // numMaxLabel:true
+    milestones: {
+}
+}; 
+$('.myElement').barIndicator(opt);
+</script>
+
+</body>
