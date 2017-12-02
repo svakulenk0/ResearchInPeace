@@ -9,3 +9,7 @@ A collection of Python scripts to obtain and store data from the Twitter API.
 
 * twython
 * pymongo
+
+## Run
+
+python create_community_list.py -- to load recent tweets in batch
