@@ -20,7 +20,7 @@ PAST_CONFERENCES = [u'#LxMLS2014', u'#LxMLS2015', u'#cikm2015', u'#DIR2015', u'#
 CONFERENCES_2016 = [u'ICLR2016', u'ICML2016', u'#ecir2016', 'WikiWorkshop2016', u'cikm2016', u'acl2016berlin', u'naacl2016', u'#EMNLP2016', '#lrec2016', 'lrec2016', 'iswc2016', '#mediaeval16', '#WASSA2016', '#NLDB2016', 'sigir2016', 'chi2016', '#CHIIR2016', 'lti16', '#BabelNetLux', 'NeuIR2016', 'CNewsStory16', 'SMnews16', 'icwsm2016', 'websci16', 'eswc2016', 'sumpre2016', 'eamt2016', '#MEPDAW', 'LREC2016SL', 'semdev2016', '#russir2016', '#AAAI16', '#icdm2016', '#IJCAI16', '#ijcai2016', '#ICCSS2016', '#wsdm2016', '#AISTATS2016', '#recsys2016', u'@acl2016', u'@www2016ca', '@icdm2016', '@ijcai16', '#COLING2016', '@ecir2016', '#clef2016', '@emnlp2016', '#acl2016berlin', '#UAI2016', '#semeval2016', 'elag2016', 'ntcir12', 'acmsigmod2016', 'ExploreDB 2016', '#wibih16', 'wibih2016', 'airs2016', '#user2016', 'ictir2016', '@WebScience16', '#umap2016', '#acmht16', '#‎SSSW2016', '#clef2016', '#poltext16', '#SocInfo16', '#MEDIR2016', '#SciPy2016', '#lxmls2016', '#smvw16', '#WiML2016', '@ictir16' '@CIKMIndy2016']
 # recent and upcomming events
 CONFERENCES_2017 = ['cikm2017', '#acl2017nlp', '@acl2017', '#WWW2017', '#essir2017', '#WSDM2017', 'ecir2017', '#acmht17', '#sigir2017', '@SIGIR17', '#ictir2017', '#icmr2017', 'icmr17', 'iclr2017', 'www2017Perth', '#recsys2017', 'SemEval2017', 'CLEF2017', 'ISWC2017', '#AAAI17', '#AAAI2017', 'eswc2017', 'IJCAI17', 'eacl2017', 'ICWE2017', 'vldb2017', 'hackzurich2017', 'IJCAI2017', '#nips2017', 'ijcnlp2017taipei']
-CONFERENCES_2018 = ['@www2018', '#LREC2018', 'iswc2018']
+CONFERENCES_2018 = ['@www2018', '#LREC2018', 'iswc2018', 'sigir2018']
 
 # keywords to collect tweets, e.g. ['esc2015', 'eurovision']
 KEYWORDS = CONFERENCE_USERS + CONFERENCES_2017 + CONFERENCES_2018 + CONFERENCE_HASHTAGS
@@ -42,7 +42,7 @@ COMMUNITIES = {'VLDB': ['vldb2017'],
                'NIPS': ['nips2017'],
                'AI': ['#AAAI17', '#AAAI2017', 'IJCAI2017'],
                'NLP': ['naacl2016', 'acl2016berlin', 'emnlp2016', 'LREC2016', 'eacl2017', '#acl2017nlp', '@acl2017', 'ijcnlp2017taipei'],
-               'InformationRetrieval': ['sigir2016', 'recsys2016', 'ictir2016', 'sigir2017', 'ecir2017', 'ecir2016'],
+               'InformationRetrieval': ['sigir2016', 'recsys2016', 'ictir2016', 'sigir2017', 'ecir2017', 'ecir2016', 'sigir2018'],
                'SemanticWeb': ['iswc2016', 'iswc2017'],
                'WebScience': ['websci16', 'WSDM2017', 'kdd2016', 'cikm2016', 'www2017Perth', 'WWW2017', 'ICWE2017', 'cikm2017'],
                'HackZurich': ['hackzurich2017', 'hackzurich'],
