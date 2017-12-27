@@ -75,7 +75,7 @@ if __name__ == '__main__':
     # test_get_users_by_location()
     while True:
         try:
-            expand_list_with_friends(location='amsterdam')
+            expand_list_with_friends(location='wien')
         except TwythonRateLimitError as e:
             print "TwythonRateLimitError... Waiting for 2000 seconds"
             time.sleep(2000)
