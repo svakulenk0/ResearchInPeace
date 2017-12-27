@@ -28,7 +28,7 @@ LISTS = ['kyiv', 'wien', 'moscow', 'Nyc', 'amsterdam']
 
 LOCAL_COMMUNITIES = {
     'kyiv': ['kyiv', 'київ', 'киев'],
-    'wien': ['wien', 'vienna'],
+    'wien_2': ['wien', 'vienna'],
     'moscow': ['moscow', 'москва'],
     'Nyc': ['New York City'],
     'amsterdam': ['amsterdam'],
@@ -57,7 +57,7 @@ def expand_list_with_friends(location):
         print "#Friends in " + list_name +":", len(users)
         TP.add_to_list(set(users), list_name)
         # to avoid Twitter block
-        time.sleep(2000)
+        # time.sleep(2000)
 
 
 def test_expand_list_with_friends():
@@ -75,7 +75,7 @@ if __name__ == '__main__':
     # test_get_users_by_location()
     while True:
         try:
-            expand_list_with_friends(location='wien')
+            expand_list_with_friends(location='wien_2')
         except TwythonRateLimitError as e:
             print "TwythonRateLimitError... Waiting for 2000 seconds"
             time.sleep(2000)
