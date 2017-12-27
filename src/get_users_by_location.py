@@ -15,7 +15,7 @@ import numpy as np
 import time
 
 from create_community_list import Twitter_Processor
-from twython.exceptions import TwythonRateLimitError
+from twython.exceptions import TwythonRateLimitError, TwythonAuthError
 
 # from crawl_friends import expand_list_with_fofs
 
@@ -69,7 +69,7 @@ def expand_list_with_friends(location, oldlists=['wien']):
                      for user in friends for location in user['location'].split() if keyword in location.lower().encode('utf-8')]
             new_users = set(users) - set(members_names)
             TP.add_to_list(new_users, list_name, deduplicate=False)
-        except:
+        except TwythonAuthError as e:
             continue
 
 
