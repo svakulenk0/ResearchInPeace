@@ -60,16 +60,17 @@ def expand_list_with_friends(location, oldlists=['wien']):
     # shuffle the list of users randomly
     for member in np.random.permutation(members_names):
         print "User:", member
-        # get friends
-        friends = TP.retrieve_friends_of(member, 200)
-        print "#Friends:", len(friends)
-        # check user-specified location
-        users = [user['screen_name'] for keyword in keywords
-                 for user in friends for location in user['location'].split() if keyword in location.lower().encode('utf-8')]
-        new_users = set(users) - set(members_names)
-        TP.add_to_list(new_users, list_name, deduplicate=False)
-        # to avoid Twitter block
-        # time.sleep(2000)
+        try:
+            # get friends
+            friends = TP.retrieve_friends_of(member, 200)
+            print "#Friends:", len(friends)
+            # check user-specified location
+            users = [user['screen_name'] for keyword in keywords
+                     for user in friends for location in user['location'].split() if keyword in location.lower().encode('utf-8')]
+            new_users = set(users) - set(members_names)
+            TP.add_to_list(new_users, list_name, deduplicate=False)
+        except:
+            continue
 
 
 def test_expand_list_with_friends():
