@@ -33,6 +33,11 @@ class Twitter_Processor():
         self.twitter_client.delete_list(slug=list_name,
                                         owner_screen_name=MY_NAME)
 
+    def delete_list_members(self, list_name, members):
+        self.twitter_client.delete_list_members(slug=list_name,
+                                                owner_screen_name=MY_NAME,
+                                                screen_name=members)
+
     def retrieve_my_lists(self):
         return self.twitter_client.show_lists(screen_name=MY_NAME)
 
@@ -70,18 +75,22 @@ class Twitter_Processor():
         else:
             return users
 
-    def add_to_list(self, users, list_name, batch_size=50):
+    def add_to_list(self, users, list_name, batch_size=50, deduplicate=True):
+        '''
+        users <set>
+        '''
         # remove users that are already in the list: users - set
-        list_members = []
-        try:
-            list_members = self.get_list_members(list_name)
-        except:
-            # create a new list
-            self.twitter_client.create_list(name=list_name)
+        if deduplicate:
+            list_members = []
+            try:
+                list_members = self.get_list_members(list_name)
+            except:
+                # create a new list
+                self.twitter_client.create_list(name=list_name)
 
-        if list_members:
-            list_members_names = set([member['screen_name'] for member in list_members])
-            users.difference_update(list_members_names)
+            if list_members:
+                list_members_names = set([member['screen_name'] for member in list_members])
+                users.difference_update(list_members_names)
 
         # remove bots from candidates
         bots = self.get_list_members(BOT_LIST)
